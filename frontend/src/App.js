@@ -1,51 +1,38 @@
-import { useEffect } from "react";
-import "@/App.css";
+import React from "react";
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { Toaster } from "./components/ui/toaster";
+import Home from "./pages/Home";
+import OfficeSpace from "./pages/OfficeSpace";
+import Coworking from "./pages/Coworking";
+import VirtualOffices from "./pages/VirtualOffices";
+import MeetingRooms from "./pages/MeetingRooms";
+import Membership from "./pages/Membership";
+import Locations from "./pages/Locations";
+import Contact from "./pages/Contact";
+import HybridWorking from "./pages/HybridWorking";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Header />
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/office-space" element={<OfficeSpace />} />
+          <Route path="/coworking" element={<Coworking />} />
+          <Route path="/virtual-offices" element={<VirtualOffices />} />
+          <Route path="/meeting-rooms" element={<MeetingRooms />} />
+          <Route path="/membership" element={<Membership />} />
+          <Route path="/locations" element={<Locations />} />
+          <Route path="/locations/:city" element={<Locations />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/hybrid-working" element={<HybridWorking />} />
         </Routes>
+        <Footer />
+        <Toaster />
       </BrowserRouter>
     </div>
   );
