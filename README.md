@@ -6,7 +6,7 @@ A modern full-stack Next.js application for office space and coworking solutions
 
 - **Full Stack Next.js**: Server-side rendering and API routes
 - **TypeScript**: Type-safe codebase
-- **MongoDB**: Database integration for status checks and data storage
+- **Static Data**: In-memory data storage for API endpoints
 - **Modern UI**: Built with Radix UI and Tailwind CSS
 - **Responsive Design**: Mobile-first approach
 
@@ -14,7 +14,7 @@ A modern full-stack Next.js application for office space and coworking solutions
 
 - **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
-- **Database**: MongoDB
+- **Data Storage**: In-memory static data
 - **Styling**: Tailwind CSS
 - **UI Components**: Radix UI
 - **Icons**: Lucide React
@@ -24,7 +24,6 @@ A modern full-stack Next.js application for office space and coworking solutions
 ### Prerequisites
 
 - Node.js 18+ 
-- MongoDB (local or cloud instance)
 - npm or yarn
 
 ### Installation
@@ -39,19 +38,7 @@ cd i-network
 npm install
 ```
 
-3. Set up environment variables
-```bash
-cp .env.example .env.local
-```
-
-Edit `.env.local` with your MongoDB connection string:
-```
-MONGO_URL=mongodb://localhost:27017
-DB_NAME=i-network
-CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
-```
-
-4. Run the development server
+3. Run the development server
 ```bash
 npm run dev
 ```
@@ -74,7 +61,6 @@ i-network/
 │   │   ├── Footer.tsx
 │   │   └── SolutionCard.tsx
 │   ├── lib/               # Utilities
-│   │   ├── mongodb.ts     # MongoDB connection
 │   │   └── utils.ts       # Helper functions
 │   ├── data/              # Mock data
 │   ├── hooks/             # Custom React hooks
@@ -127,9 +113,9 @@ npm run lint
 
 ## Environment Variables
 
-- `MONGO_URL` - MongoDB connection string
-- `DB_NAME` - Database name
-- `CORS_ORIGINS` - Comma-separated list of allowed CORS origins
+No environment variables required! The application uses static in-memory data storage.
+
+**Note**: API data is stored in-memory and will reset on server restart. For production use, consider implementing a proper database or external storage service.
 
 ## License
 
